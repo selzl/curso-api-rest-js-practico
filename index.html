@@ -1,14 +1,231 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>PlatziMovies</title>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@700;800&family=Red+Hat+Display:wght@400;500&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="./styles/app.css" />
+
+  <title>GunterMeowvies</title>
 </head>
 <body>
-  <h1>PlatziMovies</h1>
+  <header id="header" class="header-container">
+    <span class="header-arrow inactive">&lt;</span>
+    <h1 class="header-title">✨GunterMeowvies✨</h1>
+    <h1 class="header-title header-title--categoryView inactive">Acción</h1>
+
+    <form id="searchForm" class="header-searchForm">
+      <input type="text" placeholder="Kiki's Delivery Service" />
+      <button>🔍</button>
+    </form>
+  </header>
+
+  <section id="trendingPreview" class="trendingPreview-container">
+    <div class="trendingPreview-header">
+      <h2 class="trendingPreview-title">Tendencias Gatunas 🔝</h2>
+      <button class="trendingPreview-btn">Ver más</button>
+    </div>
+
+    <article class="trendingPreview-movieList">
+      <div class="movie-container">
+        <img
+          src="https://cdn.amightygirl.com/catalog/product/cache/1/thumbnail/850.06954102921x1200/9df78eab33525d08d6e5fb8d27136e95/k/i/kiki-delivery-service-new.jpg"
+          class="movie-img"
+          alt="Kiki Delivery Service (Majo no Takkyūbin)"
+        />
+      </div>
+
+      <div class="movie-container">
+        <img
+          src="https://cdn.amightygirl.com/catalog/product/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/t/o/totoro_disney.jpg"
+          class="movie-img"
+          alt="My Neighbor Totoro (Tonari no Totoro)"
+        />
+      </div>
+
+      <div class="movie-container">
+        <img
+          src="https://cdn.amightygirl.com/catalog/product/cache/1/thumbnail/955.41401273885x1200/9df78eab33525d08d6e5fb8d27136e95/h/o/howl.jpg"
+          class="movie-img"
+          alt="Howl´s Moving Castle (Hauru no Ugoku Shiro)"
+        />
+      </div>
+
+      <div class="movie-container">
+        <img
+          src="https://cdn.amightygirl.com/catalog/product/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/s/p/spirited_disney.jpg"
+          class="movie-img"
+          alt="Spirited away (Sen to Chihiro no Kamikakushi)"
+        />
+      </div>
+
+      <div class="movie-container">
+        <img
+          src="https://cdn.amightygirl.com/catalog/product/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/c/a/cat_returns.jpg"
+          class="movie-img"
+          alt="The Cat Returns (Neko no Ongaeshi)"
+        />
+      </div>
+    </article>
+  </section>
+  <section id="trendingPreview" class="trendingPreview-container">
+    <div class="trendingPreview-header">
+      <h2 class="trendingPreview-title">Lo mas popular entre los michis 🍿</h2>
+      <button class="trendingPreview-btn">Ver más</button>
+    </div>
+
+    <article class="trendingPreview-movieList">
+      <div class="movie-container">
+        <img
+          src="https://static.wikia.nocookie.net/doblaje/images/b/bb/Losaristogatos.jpg/revision/latest/scale-to-width-down/1000?cb=20120124201946&path-prefix=es"
+          class="movie-img"
+          alt="The Aristocats"
+        />
+      </div>
+
+      <div class="movie-container">
+        <img
+          src="https://static.wikia.nocookie.net/doblaje/images/c/cd/Oliver_y_su_Pandilla.jpg/revision/latest/scale-to-width-down/1000?cb=20091116155745&path-prefix=es"
+          class="movie-img"
+          alt="Oliver & Company"
+        />
+      </div>
+
+      <div class="movie-container">
+        <img
+          src="https://static.wikia.nocookie.net/doblaje/images/6/6d/Robinhood1973.jpg/revision/latest?cb=20230407173313&path-prefix=es"
+          class="movie-img"
+          alt="Robin Hood"
+        />
+      </div>
+
+      <div class="movie-container">
+        <img
+          src="https://static.wikia.nocookie.net/doblaje/images/8/86/Gatos_no_bailan.jpg/revision/latest?cb=20240115154239&path-prefix=es"
+          class="movie-img"
+          alt="Cats Don't Dance"
+        />
+      </div>
+
+      <div class="movie-container">
+        <img
+          src="https://static.wikia.nocookie.net/doblaje/images/7/7a/20110818222549%21Aliceinwonderland.jpg/revision/latest/scale-to-width-down/1000?cb=20110819170917&path-prefix=es"
+          class="movie-img"
+          alt="Alice in Wonderland"
+        />
+      </div>
+    </article>
+  </section>
+
+  <section id="categoriesPreview" class="categoriesPreview-container">
+    <h2 class="categoriesPreview-title">Categorías 😸</h2>
+
+    <article class="categoriesPreview-list">
+      <div class="category-container">
+        <h3 id="id28" class="category-title">Romance</h3>
+      </div>
+
+      <div class="category-container">
+        <h3 id="id16" class="category-title">Drama</h3>
+      </div>
+
+      <div class="category-container">
+        <h3 id="id35" class="category-title">Acción</h3>
+      </div>
+
+       <div class="category-container">
+        <h3 id="id14" class="category-title">Terror</h3>
+      </div>
+    </article>
+  </section>
+
+  <section id="genericList" class="genericList-container inactive">
+    <div class="movie-container">
+      <img
+        src="https://image.tmdb.org/t/p/w300/adOzdWS35KAo21r9R4BuFCkLer6.jpg"
+        class="movie-img"
+        alt="Nombre de la película"
+      />
+    </div>
+
+    <div class="movie-container">
+      <img
+        src="https://image.tmdb.org/t/p/w300/adOzdWS35KAo21r9R4BuFCkLer6.jpg"
+        class="movie-img"
+        alt="Nombre de la película"
+      />
+    </div>
+
+    <div class="movie-container">
+      <img
+        src="https://image.tmdb.org/t/p/w300/adOzdWS35KAo21r9R4BuFCkLer6.jpg"
+        class="movie-img"
+        alt="Nombre de la película"
+      />
+    </div>
+  </section>
+
+  <section id="movieDetail" class="movieDetail-container inactive">
+    <h1 class="movieDetail-title">The Cat Returns</h1>
+    <span class="movieDetail-score">7.6</span>
+    <p class="movieDetail-description">
+        Haru Yoshioka is a shy but noble high school student who has a suppressed ability to talk with cats. One day, she saves a cat from being hit by a truck on a busy road. The cat she saved turns out to be Lune, Prince of the Cat Kingdom. As thanks, the cats give Haru unwanted gifts such as catnip and mice, and she is offered the Prince's hand in marriage. Her mixed reply is taken as a yes.
+    </p>
+
+    <article class="categories-list">
+      <div class="category-container">
+        <h3 id="id28" class="category-title">Romance</h3>
+      </div>
+
+      <div class="category-container">
+        <h3 id="id16" class="category-title">Drama</h3>
+      </div>
+
+      <div class="category-container">
+        <h3 id="id35" class="category-title">Acción</h3>
+      </div>
+
+      <div class="category-container">
+        <h3 id="id14" class="category-title">Terror</h3>
+      </div>
+    </article>
+
+    <article class="relatedMovies-container">
+      <h2 class="relatedMovies-title">Películas similares</h2>
+
+      <div class="relatedMovies-scrollContainer">
+        <div class="movie-container">
+          <img
+            src="https://image.tmdb.org/t/p/w300/adOzdWS35KAo21r9R4BuFCkLer6.jpg"
+            class="movie-img"
+            alt="Nombre de la película"
+          />
+        </div>
+        
+        <div class="movie-container">
+          <img
+            src="https://image.tmdb.org/t/p/w300/adOzdWS35KAo21r9R4BuFCkLer6.jpg"
+            class="movie-img"
+            alt="Nombre de la película"
+          />
+        </div>
+        
+        <div class="movie-container">
+          <img
+            src="https://image.tmdb.org/t/p/w300/adOzdWS35KAo21r9R4BuFCkLer6.jpg"
+            class="movie-img"
+            alt="Nombre de la película"
+          />
+        </div>
+      </div>
+    </article>
+  </section>
+
+  <footer>✨Hecho con amor por un michi cinefilo✨</footer>
   
   <script src="./src/secrets.js"></script>
   <script src="./src/main.js"></script>
