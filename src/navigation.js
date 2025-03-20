@@ -1,4 +1,4 @@
-import {getTrendingMoviesPreview, getCategoriesPreview, getTvShowsPreview} from "./main.js"
+import {getTrendingMoviesPreview, getCategoriesPreview, getTvShowsPreview, getMoviesByCategory} from "./main.js"
 import {headerSection, trendingPreviewSection,popularTvShowPreviewSection, categoriesPreviewSection, genericSection,
         movieDetailSection, searchForm, trendingMoviesPreviewList, popularTvShowPreviewTvShowList,
         categoriesPreviewList, movieDetailCategoriesList, relatedMoviesContainer, headerTitle,
@@ -78,7 +78,13 @@ function categoriesPage() {
     genericSection.classList.remove('inactive');
     movieDetailSection.classList.add('inactive');
     
+    const [_, categoryData] = location.hash.split('=');
+    console.log(categoryData);
+    const [categoryId, categoryName] = categoryData.split('-');
     
+
+    headerCategoryTitle.innerHTML = categoryName;
+    getMoviesByCategory(categoryId);
 }
 
 function movieDetailsPage() {
