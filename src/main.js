@@ -9,13 +9,19 @@ const api = axios.create({
     },
 });
 import { API_KEY } from "./secrets.js";
+import {headerSection, trendingPreviewSection,popularTvShowPreviewSection, categoriesPreviewSection, genericSection,
+    movieDetailSection, searchForm, trendingMoviesPreviewList, popularTvShowPreviewTvShowList,
+    categoriesPreviewList, movieDetailCategoriesList, relatedMoviesContainer, headerTitle,
+    arrowBtn, headerCategoryTitle, searchFormInput, searchFormBtn, trendingBtn, popularTvShowPreviewBtn,
+    movieDetailTitle, movieDetailDescription, movieDetailScore} from "./nodes.js"
 
 export async function getTrendingMoviesPreview() {
     const { data } = await api('trending/movie/day');
     const movies = data.results;
-    movies.forEach(movie => {
-        const trendingMoviesPreviewList = document.querySelector('#trendingPreview .trendingPreview-movieList')
 
+    trendingMoviesPreviewList.innerHTML = "";
+
+    movies.forEach(movie => {
         const movieContainer = document.createElement('div');
         movieContainer.classList.add('movie-container');
 
@@ -35,9 +41,10 @@ export async function getTrendingMoviesPreview() {
 export async function getCategoriesPreview() {
     const { data } = await api('genre/movie/list');
     const categories = data.genres;
-    categories.forEach(category => {
-        const categoriesPreviewList = document.querySelector('#categoriesPreview .categoriesPreview-list')
 
+    categoriesPreviewList.innerHTML = "";
+
+    categories.forEach(category => {
         const categoryContainer = document.createElement('div');
         categoryContainer.classList.add('category-container');
 
@@ -56,9 +63,10 @@ export async function getCategoriesPreview() {
 export async function getTvShowsPreview() {
     const { data } = await api('tv/popular');
     const series = data.results;
-    series.forEach(serie => {
-        const popularTvShowPreviewTvShowList = document.querySelector('#popularTvShowPreview .popularTvShowPreview-tvShowList')
 
+    popularTvShowPreviewTvShowList.innerHTML =  "";
+
+    series.forEach(serie => {
         const tvShowContainer = document.createElement('div');
         tvShowContainer.classList.add('movie-container');
 
