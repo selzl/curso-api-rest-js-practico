@@ -187,7 +187,7 @@ button {
   width: 72px;
 }
 
-.trendingPreview-movieList {
+.trendingPreview-movieList  {
   overflow-x: scroll;
   overflow-y: hidden;
   white-space: nowrap;
@@ -196,9 +196,32 @@ button {
   padding-bottom: 16px;
 }
 
+.popularTvShowPreview-tvShowList  {
+  overflow-x: scroll;
+  overflow-y: hidden;
+  white-space: nowrap;
+  height: 241px;
+  padding-left: 24px;
+  padding-bottom: 16px;
+}
+
+.popularTvShowPreview-tvShowList .movie-container {
+  display: inline-block;
+  margin-right: 8px;
+}
+
 .trendingPreview-movieList .movie-container {
   display: inline-block;
   margin-right: 8px;
+}
+
+.popularTvShowPreview-tvShowList .movie-container .movie-img {
+  height: 225px;
+  min-height: 225px;
+  max-height: 225px;
+  width: 150px;
+  min-width: 150px;
+  max-width: 150px;
 }
 
 .trendingPreview-movieList .movie-container .movie-img {

@@ -52,3 +52,24 @@ export async function getCategoriesPreview() {
         
     });
 }
+
+export async function getTvShowsPreview() {
+    const { data } = await api('tv/popular');
+    const series = data.results;
+    series.forEach(serie => {
+        const previewTvShowContainer = document.querySelector('#trendingPreview .popularTvShowPreview-tvShowList')
+
+        const tvShowContainer = document.createElement('div');
+        tvShowContainer.classList.add('movie-container');
+
+        const tvShowImg = document.createElement('img');
+        tvShowImg.classList.add('movie-img');
+        tvShowImg.setAttribute('alt', serie.title);
+        tvShowImg.setAttribute(
+            'src', 
+            'https://image.tmdb.org/t/p/w300' + serie.poster_path);
+
+            tvShowContainer.appendChild(tvShowImg);
+            previewTvShowContainer.appendChild(tvShowContainer);
+    });
+}

@@ -1,4 +1,4 @@
-import {getTrendingMoviesPreview, getCategoriesPreview} from "./main.js"
+import {getTrendingMoviesPreview, getCategoriesPreview, getTvShowsPreview} from "./main.js"
 window.addEventListener('DOMContentLoaded', navigator, false);
 window.addEventListener('hashchange', navigator, false);
 
@@ -24,6 +24,7 @@ function homePage() {
     console.log('Home!!!');
     getTrendingMoviesPreview();
     getCategoriesPreview();
+    getTvShowsPreview();
 }
 
 function categoriesPage() {
