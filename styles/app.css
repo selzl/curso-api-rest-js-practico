@@ -89,15 +89,15 @@ button {
 
 
 /* Shared */
-.header-container, .trendingPreview-header, .categoriesPreview-container {
+.header-container, .trendingPreview-header, .popularTvShowPreview-header, .categoriesPreview-container {
   padding: 0 24px;
 }
 
-.trendingPreview-container, .categoriesPreview-container, footer {
+.trendingPreview-container, .popularTvShowPreview-container .categoriesPreview-container, footer {
   margin-top: 48px;
 }
 
-.trendingPreview-header, .categoriesPreview-title {
+.trendingPreview-header, .popularTvShowPreview-header, .categoriesPreview-title {
   margin-bottom: 24px;
 }
 
@@ -181,7 +181,19 @@ button {
   justify-content: space-between;
 }
 
+.popularTvShowPreview-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
 .trendingPreview-btn {
+  border-radius: 8px;
+  height: 32px;
+  width: 72px;
+}
+
+.popularTvShowPreview-btn {
   border-radius: 8px;
   height: 32px;
   width: 72px;
