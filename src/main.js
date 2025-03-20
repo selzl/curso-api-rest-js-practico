@@ -5,11 +5,12 @@ const api = axios.create({
     },
     params: {
         'api_key': API_KEY,
+
     },
 });
 import { API_KEY } from "./secrets.js";
 
-async function getTrendingMoviesPreview() {
+export async function getTrendingMoviesPreview() {
     const { data } = await api('trending/movie/day');
     const movies = data.results;
     movies.forEach(movie => {
@@ -29,10 +30,9 @@ async function getTrendingMoviesPreview() {
         trendingPreviewMoviesContainer.appendChild(movieContainer);
     });
 }
-getTrendingMoviesPreview();
 
 
-async function getCategoriesPreview() {
+export async function getCategoriesPreview() {
     const { data } = await api('genre/movie/list');
     const categories = data.genres;
     categories.forEach(category => {
@@ -52,4 +52,3 @@ async function getCategoriesPreview() {
         
     });
 }
-getCategoriesPreview();
