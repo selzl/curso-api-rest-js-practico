@@ -86,7 +86,6 @@ export async function getTrendingMoviesPreview() {
     createMovies(movies, trendingMoviesPreviewList);
 }
 
-
 export async function getCategoriesPreview() {
     const { data } = await api('genre/movie/list');
     const categories = data.genres;
@@ -110,4 +109,15 @@ export async function getTvShowsPreview() {
     const series = data.results;
 
     createTvShows(series, popularTvShowPreviewTvShowList);
+}
+
+export async function getMoviesBySearch(query) {
+    const { data } = await api('search/movie', {
+        params: {
+            query,
+        },
+    });
+    const movies = data.results;
+
+    createMovies(movies, genericSection);
 }
