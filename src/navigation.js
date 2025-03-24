@@ -1,4 +1,4 @@
-import {getTrendingMoviesPreview, getCategoriesPreview, getTvShowsPreview, getMoviesByCategory, getMoviesBySearch} from "./main.js"
+import {getTrendingMoviesPreview, getCategoriesPreview, getTvShowsPreview, getMoviesByCategory, getMoviesBySearch, getTrendingMovies, getTvShows} from "./main.js"
 import {headerSection, trendingPreviewSection,popularTvShowPreviewSection, categoriesPreviewSection, genericSection,
         movieDetailSection, searchForm, trendingMoviesPreviewList, popularTvShowPreviewTvShowList,
         categoriesPreviewList, movieDetailCategoriesList, relatedMoviesContainer, headerTitle,
@@ -11,7 +11,7 @@ trendingBtn.addEventListener('click', () => {
     location.hash = '#trends'
 });
 popularTvShowPreviewBtn.addEventListener('click', () => {
-    location.hash = '#trends'
+    location.hash = '#tvShows'
 });
 
 arrowBtn.addEventListener('click', () => {
@@ -28,14 +28,22 @@ function navigator() {
     
     if (location.hash.startsWith('#trends')) {
         trendsPage()
+
     }else if (location.hash.startsWith('#search=')) {
         searchPage() 
+
     }else if (location.hash.startsWith('#movie=')) {
         movieDetailsPage()
+
+    }else if (location.hash.startsWith('#tvShows')) {
+        tvShowsPage()
+
     }else if (location.hash.startsWith('#category=')) {
         categoriesPage()
+
     }else {
         homePage();
+
     }
 }
 
@@ -141,4 +149,28 @@ function trendsPage() {
     popularTvShowPreviewTvShowList.classList.add('inactive');
     genericSection.classList.remove('inactive');
     movieDetailSection.classList.add('inactive');
+
+    headerCategoryTitle.innerHTML = '🎬 Tendencias 🎬';
+    getTrendingMovies();
+}
+
+function tvShowsPage() {
+    console.log('Tv shows!!!');
+
+    headerSection.classList.remove('header-container--long');
+    headerSection.computedStyleMap.background = '';
+    arrowBtn.classList.remove('inactive');
+    arrowBtn.classList.remove('header-arrow--white');
+    headerTitle.classList.add('inactive');
+    headerCategoryTitle.classList.remove('inactive');
+    searchForm.classList.add('inactive');
+    trendingPreviewSection.classList.add('inactive');
+    popularTvShowPreviewSection.classList.add('inactive');
+    categoriesPreviewSection.classList.add('inactive');
+    popularTvShowPreviewTvShowList.classList.add('inactive');
+    genericSection.classList.remove('inactive');
+    movieDetailSection.classList.add('inactive');
+
+    headerCategoryTitle.innerHTML = '🔝 Lo mejor de la TV 🔝';
+    getTvShows();
 }
