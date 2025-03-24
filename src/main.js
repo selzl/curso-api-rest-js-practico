@@ -10,10 +10,10 @@ const api = axios.create({
 });
 import { API_KEY } from "./secrets.js";
 import {headerSection, trendingPreviewSection,popularTvShowPreviewSection, categoriesPreviewSection, genericSection,
-    movieDetailSection, searchForm, trendingMoviesPreviewList, popularTvShowPreviewTvShowList,
-    categoriesPreviewList, movieDetailCategoriesList, relatedMoviesContainer, headerTitle,
+    movieDetailSection, serieDetailSection, searchForm, trendingMoviesPreviewList, popularTvShowPreviewTvShowList,
+    categoriesPreviewList, movieDetailCategoriesList, serieDetailCategoriesList, relatedMoviesContainer, headerTitle,
     arrowBtn, headerCategoryTitle, searchFormInput, searchFormBtn, trendingBtn, popularTvShowPreviewBtn,
-    movieDetailTitle, movieDetailDescription, movieDetailScore} from "./nodes.js"
+    movieDetailTitle, movieDetailDescription, movieDetailScore, serieDetailTitle, serieDetailDescription, serieDetailScore} from "./nodes.js"
 
 
     //Utils
@@ -23,6 +23,9 @@ import {headerSection, trendingPreviewSection,popularTvShowPreviewSection, categ
         movies.forEach(movie => {
             const movieContainer = document.createElement('div');
             movieContainer.classList.add('movie-container');
+            movieContainer.addEventListener('click', () => {
+                location.hash = '#movie=' + movie.id;
+            });
     
             const movieImg = document.createElement('img');
             movieImg.classList.add('movie-img');
@@ -64,6 +67,9 @@ import {headerSection, trendingPreviewSection,popularTvShowPreviewSection, categ
         series.forEach(serie => {
             const tvShowContainer = document.createElement('div');
             tvShowContainer.classList.add('movie-container');
+            tvShowContainer.addEventListener('click', () => {
+                location.hash = '#serie=' + serie.id;
+            });
     
             const tvShowImg = document.createElement('img');
             tvShowImg.classList.add('movie-img');
@@ -134,4 +140,40 @@ export async function getTvShows() {
     const series = data.results;
 
     createTvShows(series, genericSection);
+}
+
+export async function getMovieById(id) {
+    const { data: movie } = await api('movie/' + id);
+    
+    movieDetailTitle.textContent = movie.title;
+    movieDetailDescription.textContent = movie.overview;
+    movieDetailScore.textContent = movie.vote_average;
+    
+    const movieImgUrl ='https://image.tmdb.org/t/p/w500' + movie.poster_path;
+    headerSection.style.background = `
+    linear-gradient(
+        180deg, 
+        rgba(0, 0, 0, 0.35) 19.27%, 
+        rgba(0, 0, 0, 0) 29.17%
+        ),
+    url(${movieImgUrl})`;
+    createCategories(movie.genres, movieDetailCategoriesList);
+}
+
+export async function getSerieById(id) {
+    const { data: serie } = await api('tv/' + id);
+    
+    serieDetailTitle.textContent = serie.name;
+    serieDetailDescription.textContent = serie.overview;
+    serieDetailScore.textContent = serie.vote_average;
+    
+    const serieImgUrl ='https://image.tmdb.org/t/p/w500' + serie.poster_path;
+    headerSection.style.background = `
+    linear-gradient(
+        180deg, 
+        rgba(0, 0, 0, 0.35) 19.27%, 
+        rgba(0, 0, 0, 0) 29.17%
+        ),
+    url(${serieImgUrl})`;
+    createCategories(serie.genres, serieDetailCategoriesList);
 }

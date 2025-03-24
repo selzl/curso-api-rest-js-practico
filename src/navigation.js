@@ -1,9 +1,9 @@
-import {getTrendingMoviesPreview, getCategoriesPreview, getTvShowsPreview, getMoviesByCategory, getMoviesBySearch, getTrendingMovies, getTvShows} from "./main.js"
+import {getTrendingMoviesPreview, getCategoriesPreview, getTvShowsPreview, getMoviesByCategory, getMoviesBySearch, getTrendingMovies, getTvShows, getMovieById, getSerieById} from "./main.js"
 import {headerSection, trendingPreviewSection,popularTvShowPreviewSection, categoriesPreviewSection, genericSection,
-        movieDetailSection, searchForm, trendingMoviesPreviewList, popularTvShowPreviewTvShowList,
-        categoriesPreviewList, movieDetailCategoriesList, relatedMoviesContainer, headerTitle,
+        movieDetailSection, serieDetailSection, searchForm, trendingMoviesPreviewList, popularTvShowPreviewTvShowList,
+        categoriesPreviewList, movieDetailCategoriesList,serieDetailCategoriesList, relatedMoviesContainer, headerTitle,
         arrowBtn, headerCategoryTitle, searchFormInput, searchFormBtn, trendingBtn, popularTvShowPreviewBtn,
-        movieDetailTitle, movieDetailDescription, movieDetailScore} from "./nodes.js"
+        movieDetailTitle, movieDetailDescription, movieDetailScore, serieDetailTitle, serieDetailDescription, serieDetailScore} from "./nodes.js"
 searchFormBtn.addEventListener('click', () => {
     location.hash = '#search=' + searchFormInput.value;
 });
@@ -34,6 +34,9 @@ function navigator() {
 
     }else if (location.hash.startsWith('#movie=')) {
         movieDetailsPage()
+
+    }else if (location.hash.startsWith('#serie=')) {
+        serieDetailsPage()
 
     }else if (location.hash.startsWith('#tvShows')) {
         tvShowsPage()
@@ -110,6 +113,32 @@ function movieDetailsPage() {
     categoriesPreviewSection.classList.add('inactive');
     genericSection.classList.add('inactive');
     movieDetailSection.classList.remove('inactive');
+    serieDetailSection.classList.add('inactive');
+
+    const [_, movieId] = location.hash.split('=');
+    getMovieById(movieId);
+}
+
+function serieDetailsPage() {
+    console.log('Serie!!!');
+
+    headerSection.classList.add('header-container--long');
+    //headerSection.computedStyleMap.background = '';
+    arrowBtn.classList.remove('inactive');
+    arrowBtn.classList.add('header-arrow--white');
+    headerTitle.classList.add('inactive');
+    headerCategoryTitle.classList.add('inactive');
+    searchForm.classList.add('inactive');
+    popularTvShowPreviewTvShowList.classList.add('inactive');
+    popularTvShowPreviewSection.classList.add('inactive');
+    trendingPreviewSection.classList.add('inactive');
+    categoriesPreviewSection.classList.add('inactive');
+    genericSection.classList.add('inactive');
+    serieDetailSection.classList.remove('inactive');
+    movieDetailSection.classList.add('inactive');
+
+    const [_, serieId] = location.hash.split('=');
+    getSerieById(serieId);
 }
 
 function searchPage() {

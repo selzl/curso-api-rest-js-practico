@@ -5,6 +5,7 @@ export const popularTvShowPreviewSection = document.querySelector('#popularTvSho
 export const categoriesPreviewSection = document.querySelector('#categoriesPreview');
 export const genericSection = document.querySelector('#genericList');
 export const movieDetailSection = document.querySelector('#movieDetail');
+export const serieDetailSection = document.querySelector('#serieDetail');
 
 // Lists & Containers
 export const searchForm = document.querySelector('#searchForm');
@@ -12,6 +13,7 @@ export const trendingMoviesPreviewList = document.querySelector('.trendingPrevie
 export const popularTvShowPreviewTvShowList = document.querySelector('.popularTvShowPreview-tvShowList');
 export const categoriesPreviewList = document.querySelector('.categoriesPreview-list');
 export const movieDetailCategoriesList = document.querySelector('#movieDetail .categories-list');
+export const serieDetailCategoriesList = document.querySelector('#serieDetail .categories-list');
 export const relatedMoviesContainer = document.querySelector('.relatedMovies-scrollContainer');
 
 // Elements
@@ -28,3 +30,7 @@ export const popularTvShowPreviewBtn = document.querySelector('.popularTvShowPre
 export const movieDetailTitle = document.querySelector('.movieDetail-title');
 export const movieDetailDescription = document.querySelector('.movieDetail-description');
 export const movieDetailScore = document.querySelector('.movieDetail-score');
+
+export const serieDetailTitle = document.querySelector('.serieDetail-title');
+export const serieDetailDescription = document.querySelector('.serieDetail-description');
+export const serieDetailScore = document.querySelector('.serieDetail-score');

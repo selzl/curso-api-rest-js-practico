@@ -91,6 +91,7 @@ button {
 /* Shared */
 .header-container, .trendingPreview-header, .popularTvShowPreview-header, .categoriesPreview-container {
   padding: 0 24px;
+  background-color: var(--purple-light-1);
 }
 
 .trendingPreview-container, .popularTvShowPreview-container .categoriesPreview-container, footer {
@@ -121,6 +122,7 @@ button {
 /* Header */
 .header-container {
   padding-top: 40px;
+  
 }
 
 .header-container--long {
@@ -309,8 +311,18 @@ button {
 }
 
 
-/* Movie Detail */
+/* Movie Detail  y serie Detail*/
 .movieDetail-container {
+  border-top-left-radius: 16px;
+  border-top-right-radius: 16px;
+  padding: 32px 24px;
+  margin-top: 403px;
+  z-index: 1;
+  position: absolute;
+  background-color: var(--purple-light-1);
+}
+
+.serieDetail-container {
   border-top-left-radius: 16px;
   border-top-right-radius: 16px;
   padding: 32px 24px;
@@ -327,13 +339,34 @@ button {
   padding: 0;
 }
 
+.serieDetail-title {
+  display: inline-block;
+  width: 80%;
+  margin: 0 0 16px 0;
+  padding: 0;
+}
+
 .movieDetail-score {
   display: inline-block;
   text-align: right;
   width: 18%;
   font-weight: var(--font-weight-title2);
 }
+
+.serieDetail-score {
+  display: inline-block;
+  text-align: right;
+  width: 18%;
+  font-weight: var(--font-weight-title2);
+}
+
 .movieDetail-score::before {
+  content: '★';
+  color: var(--yellow);
+  padding-right: 4px;
+}
+
+.serieDetail-score::before {
   content: '★';
   color: var(--yellow);
   padding-right: 4px;
@@ -343,12 +376,25 @@ button {
   margin: 0 0 24px 0;
 }
 
+.serieDetail-description {
+  margin: 0 0 24px 0;
+}
+
 .relatedMovies-container {
   margin-top: 24px;
   height: 216px;
 }
 
 .relatedMovies-title {
+  margin-bottom: 16px;
+}
+
+.relatedSeries-container {
+  margin-top: 24px;
+  height: 216px;
+}
+
+.relatedSeries-title {
   margin-bottom: 16px;
 }
 
@@ -367,6 +413,29 @@ button {
 }
 
 .relatedMovies-scrollContainer .movie-img {
+  width: 125px;
+  min-width: 125px;
+  max-width: 125px;
+  height: 187.5px;
+  min-height: 187.5px;
+  max-height: 187.5px;
+}
+
+.relatedSeries-scrollContainer {
+  position: absolute;
+  overflow-x: scroll;
+  overflow-y: hidden;
+  white-space: nowrap;
+  width: calc(100vw - 24px);
+  padding-bottom: 16px;
+}
+
+.relatedSeries-scrollContainer .movie-container {
+  display: inline-block;
+  margin-right: 8px;
+}
+
+.relatedSeries-scrollContainer .movie-img {
   width: 125px;
   min-width: 125px;
   max-width: 125px;
