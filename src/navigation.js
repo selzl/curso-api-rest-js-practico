@@ -1,9 +1,9 @@
-import {getTrendingMoviesPreview, getCategoriesPreview, getTvShowsPreview, getMoviesByCategory, getMoviesBySearch, getTrendingMovies, getTvShows, getMovieById, getSerieById} from "./main.js"
+import {getTrendingMoviesPreview, getCategoriesPreview, getTvShowsPreview, getMoviesByCategory, getMoviesBySearch, getTrendingMovies, getTvShows, getMovieById, getSerieById, getRelatedSeriesById, getRelatedMoviesById} from "./main.js"
 import {headerSection, trendingPreviewSection,popularTvShowPreviewSection, categoriesPreviewSection, genericSection,
         movieDetailSection, serieDetailSection, searchForm, trendingMoviesPreviewList, popularTvShowPreviewTvShowList,
         categoriesPreviewList, movieDetailCategoriesList,serieDetailCategoriesList, relatedMoviesContainer, headerTitle,
         arrowBtn, headerCategoryTitle, searchFormInput, searchFormBtn, trendingBtn, popularTvShowPreviewBtn,
-        movieDetailTitle, movieDetailDescription, movieDetailScore, serieDetailTitle, serieDetailDescription, serieDetailScore} from "./nodes.js"
+        movieDetailTitle, relatedSeriesContainer, movieDetailDescription, movieDetailScore, serieDetailTitle, serieDetailDescription, serieDetailScore} from "./nodes.js"
 searchFormBtn.addEventListener('click', () => {
     location.hash = '#search=' + searchFormInput.value;
 });

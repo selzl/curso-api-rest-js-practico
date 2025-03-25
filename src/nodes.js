@@ -15,6 +15,7 @@ export const categoriesPreviewList = document.querySelector('.categoriesPreview-
 export const movieDetailCategoriesList = document.querySelector('#movieDetail .categories-list');
 export const serieDetailCategoriesList = document.querySelector('#serieDetail .categories-list');
 export const relatedMoviesContainer = document.querySelector('.relatedMovies-scrollContainer');
+export const relatedSeriesContainer = document.querySelector('.relatedSeries-scrollContainer');
 
 // Elements
 export const headerTitle = document.querySelector('.header-title');

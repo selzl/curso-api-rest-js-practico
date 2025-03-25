@@ -13,7 +13,7 @@ import {headerSection, trendingPreviewSection,popularTvShowPreviewSection, categ
     movieDetailSection, serieDetailSection, searchForm, trendingMoviesPreviewList, popularTvShowPreviewTvShowList,
     categoriesPreviewList, movieDetailCategoriesList, serieDetailCategoriesList, relatedMoviesContainer, headerTitle,
     arrowBtn, headerCategoryTitle, searchFormInput, searchFormBtn, trendingBtn, popularTvShowPreviewBtn,
-    movieDetailTitle, movieDetailDescription, movieDetailScore, serieDetailTitle, serieDetailDescription, serieDetailScore} from "./nodes.js"
+    movieDetailTitle, relatedSeriesContainer, movieDetailDescription, movieDetailScore, serieDetailTitle, serieDetailDescription, serieDetailScore} from "./nodes.js"
 
 
     //Utils
@@ -158,6 +158,13 @@ export async function getMovieById(id) {
         ),
     url(${movieImgUrl})`;
     createCategories(movie.genres, movieDetailCategoriesList);
+    getRelatedMoviesById(id);
+}
+
+export async function getRelatedMoviesById(id) {
+    const { data } = await api(`movie/${id}/recommendations`);
+    const relatedMovies = data.results;
+    createMovies(relatedMovies, relatedMoviesContainer);
 }
 
 export async function getSerieById(id) {
@@ -176,4 +183,11 @@ export async function getSerieById(id) {
         ),
     url(${serieImgUrl})`;
     createCategories(serie.genres, serieDetailCategoriesList);
+    getRelatedSeriesById(id); 
+}
+
+export async function getRelatedSeriesById(id) {
+    const { data } = await api(`tv/${id}/recommendations`);
+    const relatedSeries = data.results;
+    createTvShows(relatedSeries, relatedSeriesContainer);
 }
