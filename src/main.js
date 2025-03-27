@@ -17,7 +17,29 @@ import {headerSection, trendingPreviewSection,popularTvShowPreviewSection, categ
 
 
     //Utils
-    function createMovies(movies, container) {
+
+    const lazyLoaderMovie = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+            const urlMovie = entry.target.getAttribute('data-img');
+            entry.target.setAttribute('src', urlMovie);
+        }
+      });
+    });
+
+    const lazyLoaderSerie = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+                const urlSerie = entry.target.getAttribute('data-image');
+                entry.target.setAttribute('src', urlSerie);
+            }
+          });
+      });
+    
+
+ 
+
+    function createMovies(movies, container, lazyLoad = false) {
         container.innerHTML = '';
 
         movies.forEach(movie => {
@@ -31,9 +53,13 @@ import {headerSection, trendingPreviewSection,popularTvShowPreviewSection, categ
             movieImg.classList.add('movie-img');
             movieImg.setAttribute('alt', movie.title);
             movieImg.setAttribute(
-                'src', 
+                lazyLoad ? 'data-img' : 'src',
                 'https://image.tmdb.org/t/p/w300' + movie.poster_path);
-    
+
+                if (lazyLoad) {
+                    lazyLoaderMovie.observe(movieImg);
+                }
+            
             movieContainer.appendChild(movieImg);
             container.appendChild(movieContainer);
         });
@@ -61,7 +87,7 @@ import {headerSection, trendingPreviewSection,popularTvShowPreviewSection, categ
         });
     }
 
-    function createTvShows(series, container) {
+    function createTvShows(series, container, lazyLoad = false) {
         container.innerHTML = '';
 
         series.forEach(serie => {
@@ -75,11 +101,15 @@ import {headerSection, trendingPreviewSection,popularTvShowPreviewSection, categ
             tvShowImg.classList.add('movie-img');
             tvShowImg.setAttribute('alt', serie.title);
             tvShowImg.setAttribute(
-                'src', 
+                lazyLoad ? 'data-image': 'src', 
                 'https://image.tmdb.org/t/p/w300' + serie.poster_path);
     
-                tvShowContainer.appendChild(tvShowImg);
-                container.appendChild(tvShowContainer);
+                if (lazyLoad) {
+                    lazyLoaderSerie.observe(tvShowImg);
+                }
+                
+            tvShowContainer.appendChild(tvShowImg);
+            container.appendChild(tvShowContainer);
         });
     }
 
@@ -89,7 +119,7 @@ export async function getTrendingMoviesPreview() {
     const { data } = await api('trending/movie/day');
     const movies = data.results;
 
-    createMovies(movies, trendingMoviesPreviewList);
+    createMovies(movies, trendingMoviesPreviewList, true);
 }
 
 export async function getCategoriesPreview() {
@@ -114,7 +144,7 @@ export async function getTvShowsPreview() {
     const { data } = await api('tv/popular');
     const series = data.results;
 
-    createTvShows(series, popularTvShowPreviewTvShowList);
+    createTvShows(series, popularTvShowPreviewTvShowList, true);
 }
 
 export async function getMoviesBySearch(query) {
@@ -191,3 +221,6 @@ export async function getRelatedSeriesById(id) {
     const relatedSeries = data.results;
     createTvShows(relatedSeries, relatedSeriesContainer);
 }
+
+
+
