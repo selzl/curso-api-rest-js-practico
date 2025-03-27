@@ -55,7 +55,9 @@ import {headerSection, trendingPreviewSection,popularTvShowPreviewSection, categ
             movieImg.setAttribute(
                 lazyLoad ? 'data-img' : 'src',
                 'https://image.tmdb.org/t/p/w300' + movie.poster_path);
-
+            movieImg.addEventListener('error', () => {
+                movieImg.setAttribute('src', 'https://images.pexels.com/photos/27968632/pexels-photo-27968632/free-photo-of-grafiti-graffiti-arquitectura-arte-callejero.jpeg')
+             });
                 if (lazyLoad) {
                     lazyLoaderMovie.observe(movieImg);
                 }
@@ -103,6 +105,9 @@ import {headerSection, trendingPreviewSection,popularTvShowPreviewSection, categ
             tvShowImg.setAttribute(
                 lazyLoad ? 'data-image': 'src', 
                 'https://image.tmdb.org/t/p/w300' + serie.poster_path);
+            tvShowImg.addEventListener('error', () => {
+                    tvShowImg.setAttribute('src', 'https://images.pexels.com/photos/11829002/pexels-photo-11829002.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2');
+                });
     
                 if (lazyLoad) {
                     lazyLoaderSerie.observe(tvShowImg);
@@ -137,7 +142,7 @@ export async function getMoviesByCategory(id) {
     });
     const movies = data.results;
 
-    createMovies(movies, genericSection);
+    createMovies(movies, genericSection, true);
 }
 
 export async function getTvShowsPreview() {
@@ -162,14 +167,14 @@ export async function getTrendingMovies() {
     const { data } = await api('trending/movie/day');
     const movies = data.results;
 
-    createMovies(movies, genericSection);
+    createMovies(movies, genericSection, true);
 }
 
 export async function getTvShows() {
     const { data } = await api('tv/popular');
     const series = data.results;
 
-    createTvShows(series, genericSection);
+    createTvShows(series, genericSection, true);
 }
 
 export async function getMovieById(id) {
